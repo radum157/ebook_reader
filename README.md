@@ -12,106 +12,118 @@
 
 # Hardware details
 
-Below are the details of the OpenBook E-book reader implementation and design.
-
-The ESP32-C6 is the central component of the system, responsible for controlling and communicating with various peripherals, such as the e-paper display, sensors, SD card, etc.
+OpenBook is an e-reader platform based on ESP32-C6 with E-Paper display technology. This document outlines the hardware architecture, component selection, and design considerations.
 
 ### Primary components:
 
- * E-Paper Display:
-    - A low-power display used to show text and images.
-    - Interface: SPI (Serial Peripheral Interface) for communication with the ESP32-C6.
-    - Power consumption: Typically very low when the display is static.
+**ESP32-C6 Microcontroller**
+- ESP32-C6-WROOM-1 module
 
- * USB-C Power Input:
-    - Used to provide the 5V input power to the system.
-    - Interface: Direct connection to the power management system.
+**E-Paper Display**
+- Connected via 24-pin FPC header
+- MBRSD30 diodes in drive circuit for voltage management
+- Dedicated power regulation
 
- * Battery Management System (BMS):
-    - MCP73831 (Battery Charger IC):
-    - Manages charging and discharging of a LiPo battery.
-    - Interface: I2C communication to read battery status and health.
+### Power Management
 
- * LiPo Battery:
-    - Powers the system when USB power is not available.
-    - Power storage and supply to the system.
+**Battery System**
+- MCP73831 LiPo charging controller
+- MAX17048 fuel gauge
+- JST connector
 
- * Voltage Regulators:
-    - 3.3V LDO Regulator (XC6220A331MR-G): Provides stable 3.3V for the ESP32 and other components.
-    - 5V LDO Regulator (BD5229G-TR): Provides a stable 5V supply for components that require it, such as the USB-C port.
+**Voltage Regulation**
+- AP2112K-3.3 LDO for stable 3.3V
+- Si2301CDS for reverse polarity protection
+- BD5230G supervisor for clean resets
 
- * Sensors:
-    - Environmental Sensor (BME688): Measures temperature, humidity, pressure, and gas, providing environmental data.
-    - Interface: I2C communication with the ESP32-C6.
+### Storage & Memory
 
- * Real-Time Clock (RTC) (DS3231SN):
-    - Keeps track of the time, even when the device is powered off.
-    - Interface: I2C communication with the ESP32-C6.
+**SD Card**
+- Full-size SD slot with presence detection
+- SPI mode communication
 
- * SD Card:
-    - Used to store data, images, or logs.
-    - Interface: SPI communication with the ESP32-C6.
+**External Flash**
+- W25Q512JVEIQ NOR Flash
+- SPI interface with ESD protection
 
- * Button for Reset/Boot:
-    - Resets the ESP32-C6 or triggers boot functions.
-    - Interface: GPIO digital input pins.
+**RTC**
+- DS3231SN precision timekeeper
+- Super-cap backup power
+- I2C interface shared with sensors
+
+### Sensors & IO
+
+**Environmental Sensing**
+- BME688 for temperature, humidity, pressure, air quality
+- I2C bus connection
+
+**UI**
+- Boot, Change and Reset buttons
+- Test pads integrated as exposed copper
 
 
 ### Communication interfaces:
 
  * I2C:
     - Used for communication with the BME688 sensor and DS3231SN RTC.
-    - The ESP32-C6 uses I2C to send and receive data to/from the sensor and RTC.
-    - Pins used: SDA (Data Line), SCL (Clock Line).
+    - Send/Receive data to/from the sensor and RTC.
 
  * SPI:
     - Used for communication with the E-Paper display and SD Card.
     - The ESP32-C6 uses SPI to send data to the display and read/write to the SD card.
-    - Pins used: MOSI, MISO, SCK, CS (Chip Select).
 
  * GPIO:
-    - Various GPIO pins on the ESP32-C6 are used for the reset/boot button and other custom functionalities.
+    - Used for the reset/boot button and other custom functionalities.
+
+**USB-C**
+- FUSB302BUCX controller
+- ESD protection on data lines
+- Charging and data transfer
+
+**SPI Configuration**
+- 10MHz clock rate
+- Individual chip selects
+- Shared data and clock lines
+
+**I2C Setup**
+- 400kHz standard mode
+- 4.7kΩ pull-ups
+- Shared among BME688, MAX17048, DS3231, and QWIIC port
+
+**USB Interface**
+- 5V, 500mA input
 
 
 ### Pins used:
 
-|Component                  |Pin             |Why                   |
-|:-------------------------:|:-----------------------:|:------------------------------:|
-|     USB-C Power Input     |           N/A           |        Power input (5V)        |
-|Battery Charger (MCP73831) |     I2C (SDA, SCL)      | Communication with the charger |
-|       LiPo Battery        |           N/A           |          Power source          |
-|    3.3V LDO Regulator     |           N/A           |Provides 3.3V power to ESP32-C6 |
-|     5V LDO Regulator      |           N/A           |   Provides 5V to peripherals   |
-|      E-Paper Display      |SPI (MOSI, MISO, SCK, CS)|Data and control for the display|
-|BME688 Environmental Sensor|     I2C (SDA, SCL)      |   Communication with sensor    |
-|       DS3231SN RTC        |     I2C (SDA, SCL)      |     Communication with RTC     |
-|          SD Card          |SPI (MOSI, MISO, SCK, CS)|          Data storage          |
-|     Reset/Boot Button     |   GPIO (e.g., GPIO0)    |  Reset or boot functionality   |
+
+| Pin | Function | Connected To | Why |
+|-----|----------|--------------|-----------|
+| GPIO0 | BOOT | Boot/Reset Button | Flash mode access |
+| GPIO1/2 | UART | USB-Serial | Debugging |
+| GPIO3-4, 6-7 | SD Card | SD interface | Dedicated SD pins for reliability |
+| GPIO5 | EPD_CS | E-Paper CS line | Display control |
+| GPIO8 | FLASH_CS | External Flash | Flash memory selection |
+| GPIO9-11 | SPI Bus | Shared SPI | Central bus for all SPI devices |
+| GPIO12-13 | I2C Bus | Sensors & expansion | Shared I2C for all sensors |
+| GPIO14-16 | EPD Control | E-Paper control signals | Timing control |
+| GPIO17 | ADC | Battery voltage | Power monitoring |
+| GPIO19-23 | EPD Data | E-Paper data lines | Display data transfer |
 
 
 ### Power consumption:
-
-- ESP32-C6: ~150-250mA
-
-- E-Paper Display: ~20-30mA
-
-- BME688: ~3-5mA
-
-- DS3231 RTC: ~1-2mA
-
-- SD Card: ~30-50mA
-
-- USB-C Power Input: Provides 5V, with 500mA capacity.
-
-- LiPo Battery: Provides 3.7V, with a capacity of ~1000mAh.
+- Display: ~125mA @ 3.3V
+- Idle: ~25mA @ 3.3V
+- Deep sleep: ~150μA @ 3.3V
+- Duty cycle: 2-4 weeks typical use (3000mAh)
 
 # Design
 
-The final design of the PCB and 3D model attempt to minimize interference and maximize ease-of-use, while maintaining all of the core functionalities of OpenBook.
+The final design of the PCB and 3D model attempt to minimize noise interference and maximize ease-of-use, while maintaining all of the core functionalities of OpenBook.
 
 ![case1](./Images/OpenBook_front.png)
 
-![case2](./Images/OpenBook%20_right_1.png)
+![case2](./Images/OpenBook_right_1.png)
 
 ![case3](./Images/OpenBook_above_2.png)
 
