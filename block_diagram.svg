@@ -1,0 +1,153 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <!-- Background -->
+  <rect width="800" height="600" fill="#f9f9f9"/>
+
+  <!-- Title -->
+  <text x="400" y="30" font-family="Arial" font-size="20" font-weight="bold" text-anchor="middle">E-Paper Device Block Diagram</text>
+
+  <!-- Power Section (Left) -->
+  <rect x="40" y="60" width="160" height="360" fill="#f5f5f5" stroke="#aaa" stroke-width="1" rx="5"/>
+  <text x="120" y="80" font-family="Arial" font-size="16" font-weight="bold" text-anchor="middle">Power System</text>
+
+  <!-- USB-C -->
+  <rect x="70" y="100" width="100" height="50" fill="#e0e0e0" stroke="#444" stroke-width="2" rx="4"/>
+  <text x="120" y="130" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle">USB-C</text>
+
+  <!-- Battery Charger -->
+  <rect x="70" y="190" width="100" height="60" fill="#c0d0ff" stroke="#444" stroke-width="2" rx="4"/>
+  <text x="120" y="215" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle">Battery</text>
+  <text x="120" y="235" font-family="Arial" font-size="14" text-anchor="middle">Charger</text>
+  <text x="120" y="250" font-family="Arial" font-size="10" text-anchor="middle">MCP73831</text>
+
+  <!-- Li-Po Battery -->
+  <rect x="70" y="290" width="100" height="50" fill="#ffd0d0" stroke="#444" stroke-width="2" rx="4"/>
+  <text x="120" y="320" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle">LiPo Battery</text>
+
+  <!-- Regulators -->
+  <rect x="40" y="440" width="330" height="140" fill="#f5f5f5" stroke="#aaa" stroke-width="1" rx="5"/>
+  <text x="205" y="460" font-family="Arial" font-size="16" font-weight="bold" text-anchor="middle">Power Regulation</text>
+
+  <!-- 3V3 LDO -->
+  <rect x="60" y="480" width="130" height="60" fill="#d0e0f0" stroke="#444" stroke-width="2" rx="4"/>
+  <text x="125" y="505" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle">3V3 LDO</text>
+  <text x="125" y="525" font-family="Arial" font-size="10" text-anchor="middle">XC6220A331MR-G</text>
+
+  <!-- Voltage Regulator -->
+  <rect x="220" y="480" width="130" height="60" fill="#ffd0d0" stroke="#444" stroke-width="2" rx="4"/>
+  <text x="285" y="505" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle">LDO Voltage</text>
+  <text x="285" y="525" font-family="Arial" font-size="10" text-anchor="middle">BD5229G-TR</text>
+
+  <!-- Main Components (Center) -->
+  <rect x="220" y="160" width="150" height="260" fill="#f5f5f5" stroke="#aaa" stroke-width="1" rx="5"/>
+  <text x="295" y="180" font-family="Arial" font-size="16" font-weight="bold" text-anchor="middle">Components</text>
+
+  <!-- Battery Monitor -->
+  <rect x="235" y="200" width="120" height="60" fill="#fff0d0" stroke="#444" stroke-width="2" rx="4"/>
+  <text x="295" y="225" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle">Battery Monitor</text>
+  <text x="295" y="245" font-family="Arial" font-size="10" text-anchor="middle">MAX17048G</text>
+
+  <!-- Flash Memory -->
+  <rect x="235" y="280" width="120" height="60" fill="#fff0d0" stroke="#444" stroke-width="2" rx="4"/>
+  <text x="295" y="305" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle">NOR Flash</text>
+  <text x="295" y="325" font-family="Arial" font-size="10" text-anchor="middle">W25Q512 64MB</text>
+
+  <!-- RTC -->
+  <rect x="235" y="360" width="120" height="60" fill="#fff0d0" stroke="#444" stroke-width="2" rx="4"/>
+  <text x="295" y="385" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle">RTC</text>
+  <text x="295" y="405" font-family="Arial" font-size="10" text-anchor="middle">DS3231SN</text>
+
+  <!-- Peripherals Section (Right) -->
+  <rect x="390" y="440" width="370" height="140" fill="#f5f5f5" stroke="#aaa" stroke-width="1" rx="5"/>
+  <text x="575" y="460" font-family="Arial" font-size="16" font-weight="bold" text-anchor="middle">Peripherals</text>
+
+  <!-- Environmental Sensor -->
+  <rect x="410" y="480" width="150" height="60" fill="#fff0d0" stroke="#444" stroke-width="2" rx="4"/>
+  <text x="485" y="505" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle">Environmental Sensor</text>
+  <text x="485" y="525" font-family="Arial" font-size="10" text-anchor="middle">BME688</text>
+
+  <!-- Qwiic/STEMMA QT -->
+  <rect x="590" y="480" width="150" height="60" fill="#d0e0ff" stroke="#444" stroke-width="2" rx="4"/>
+  <text x="665" y="505" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle">Qwiic / STEMMA QT</text>
+  <text x="665" y="525" font-family="Arial" font-size="10" text-anchor="middle">I2C Connector</text>
+
+  <!-- Main System (Top right) -->
+  <rect x="390" y="60" width="370" height="360" fill="#f5f5f5" stroke="#aaa" stroke-width="1" rx="5"/>
+  <text x="575" y="80" font-family="Arial" font-size="16" font-weight="bold" text-anchor="middle">Main System</text>
+
+  <!-- ESP32 -->
+  <rect x="500" y="100" width="150" height="80" fill="#d0ffd0" stroke="#444" stroke-width="2" rx="4"/>
+  <text x="575" y="140" font-family="Arial" font-size="16" font-weight="bold" text-anchor="middle">ESP32-C6</text>
+  <text x="575" y="160" font-family="Arial" font-size="12" text-anchor="middle">WROOM</text>
+
+  <!-- E-Paper Display -->
+  <rect x="410" y="220" width="150" height="70" fill="#d0e0ff" stroke="#444" stroke-width="2" rx="4"/>
+  <text x="485" y="255" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle">E-Paper Display</text>
+
+  <!-- SD Card -->
+  <rect x="590" y="220" width="150" height="70" fill="#ffd0d0" stroke="#444" stroke-width="2" rx="4"/>
+  <text x="665" y="255" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle">SD Card</text>
+
+  <!-- Boot/Reset Button -->
+  <rect x="500" y="320" width="150" height="70" fill="#ffd0d0" stroke="#444" stroke-width="2" rx="4"/>
+  <text x="575" y="350" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle">Reset and Boot</text>
+  <text x="575" y="370" font-family="Arial" font-size="10" text-anchor="middle">Buttons</text>
+
+  <!-- Connections -->
+  <!-- USB to Charger -->
+  <path d="M120 150 L120 190" stroke="#000" stroke-width="2" fill="none" stroke-dasharray="4,0"/>
+  <text x="130" y="170" font-family="Arial" font-size="12" font-weight="bold">5V</text>
+
+  <!-- Charger to Battery -->
+  <path d="M120 250 L120 290" stroke="#000" stroke-width="2" fill="none" stroke-dasharray="4,0"/>
+
+  <!-- Battery to Monitors -->
+  <path d="M120 340 L120 380 L200 380 L200 230 L235 230" stroke="#000" stroke-width="2" fill="none" stroke-dasharray="4,0"/>
+  <text x="180" y="370" font-family="Arial" font-size="12" font-weight="bold">VBAT</text>
+
+  <!-- Battery to Regulators -->
+  <path d="M120 380 L120 480" stroke="#000" stroke-width="2" fill="none" stroke-dasharray="4,0"/>
+  <path d="M200 380 L250 380 L250 440 L285 440 L285 480" stroke="#000" stroke-width="2" fill="none" stroke-dasharray="4,0"/>
+
+  <!-- USB to ESP32 -->
+  <path d="M170 125 L400 125 L400 140 L500 140" stroke="#000" stroke-width="2" fill="none"/>
+  <text x="230" y="120" font-family="Arial" font-size="12" font-weight="bold">USB</text>
+
+  <!-- 3.3V Power Bus -->
+  <path d="M125 540 L125 560 L575 560" stroke="#000" stroke-width="2" fill="none" stroke-dasharray="4,0"/>
+  <text x="145" y="575" font-family="Arial" font-size="12" font-weight="bold">3.3V</text>
+
+  <!-- 3.3V connections -->
+  <path d="M295 560 L295 420" stroke="#000" stroke-width="2" fill="none" stroke-dasharray="4,0"/>
+  <path d="M485 560 L485 540" stroke="#000" stroke-width="2" fill="none" stroke-dasharray="4,0"/>
+  <path d="M665 560 L665 540" stroke="#000" stroke-width="2" fill="none" stroke-dasharray="4,0"/>
+  <path d="M575 560 L575 390" stroke="#000" stroke-width="2" fill="none" stroke-dasharray="4,0"/>
+  <circle cx="295" cy="560" r="3" fill="#000"/>
+  <circle cx="485" cy="560" r="3" fill="#000"/>
+  <circle cx="575" cy="560" r="3" fill="#000"/>
+  <circle cx="665" cy="560" r="3" fill="#000"/>
+
+  <!-- ESP32 to E-Paper Display -->
+  <path d="M530 180 L485 180 L485 220" stroke="#336" stroke-width="2" fill="none"/>
+  <text x="490" y="200" font-family="Arial" font-size="12" font-weight="bold">SPI</text>
+
+  <!-- ESP32 to SD Card -->
+  <path d="M620 180 L665 180 L665 220" stroke="#336" stroke-width="2" fill="none"/>
+  <text x="670" y="200" font-family="Arial" font-size="12" font-weight="bold">SPI</text>
+
+  <!-- ESP32 to Buttons -->
+  <path d="M575 180 L575 320" stroke="#336" stroke-width="2" fill="none"/>
+  <text x="585" y="200" font-family="Arial" font-size="12" font-weight="bold">GPIO</text>
+
+  <!-- ESP32 to Flash -->
+  <path d="M500 160 L400 160 L400 310 L355 310" stroke="#336" stroke-width="2" fill="none"/>
+  <text x="380" y="305" font-family="Arial" font-size="12" font-weight="bold">SPI</text>
+
+  <!-- I2C Bus -->
+  <path d="M535 180 L450 180 L450 390 L355 390" stroke="#363" stroke-width="2" fill="none"/>
+  <path d="M450 390 L450 510 L410 510" stroke="#363" stroke-width="2" fill="none"/>
+  <path d="M450 510 L590 510" stroke="#363" stroke-width="2" fill="none"/>
+  <text x="440" y="400" font-family="Arial" font-size="12" font-weight="bold">I2C</text>
+  <circle cx="450" cy="180" r="3" fill="#363"/>
+  <circle cx="450" cy="390" r="3" fill="#363"/>
+  <circle cx="450" cy="510" r="3" fill="#363"/>
+</svg>
