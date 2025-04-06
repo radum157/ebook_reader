@@ -121,28 +121,28 @@ OpenBook is an e-reader platform based on ESP32-C6 with E-Paper display technolo
 
 The final design of the PCB and 3D model attempt to minimize noise interference and maximize ease-of-use, while maintaining all of the core functionalities of OpenBook.
 
-![case1](./Images/OpenBook_front.png)
+![case1](Images/OpenBook_front.png)
 
-![case2](./Images/OpenBook_right_1.png)
+![case2](Images/OpenBook_right_1.png)
 
-![case3](./Images/OpenBook_above_2.png)
+![case3](Images/OpenBook_above_2.png)
 
-![case4](./Images/OpenBook_left.png)
+![case4](Images/OpenBook_left.png)
 
-![case5](./Images/OpenBook_back.png)
+![case5](Images/OpenBook_back.png)
 
 
-![pcb1](./Images/OpenBook_PCB_left.png)
+![pcb1](Images/OpenBook_PCB_left.png)
 
-![pcb2](./Images/OpenBook_PCB_top.png)
+![pcb2](Images/OpenBook_PCB_top.png)
 
-![pcb3](./Images/OpenBook_PCB_right.png)
+![pcb3](Images/OpenBook_PCB_right.png)
 
-![pcb4](./Images/OpenBook_PCB_bottom.png)
+![pcb4](Images/OpenBook_PCB_bottom.png)
 
 # Diagram
 
-![diagram](./block_diagram.svg)
+![diagram](block_diagram.svg)
 
 # Bill of Materials
 
