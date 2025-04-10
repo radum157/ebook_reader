@@ -17,24 +17,26 @@ OpenBook is an e-reader platform based on ESP32-C6 with E-Paper display technolo
 ### Primary components:
 
 **ESP32-C6 Microcontroller**
-- ESP32-C6-WROOM-1 module
+- ESP32-C6-WROOM-1-N8 module
 
 **E-Paper Display**
+- Waveshare 7.5” e-Paper V2
 - Connected via 24-pin FPC header
-- MBRSD30 diodes in drive circuit for voltage management
+- MBR0530 diodes in drive circuit for voltage management
 - Dedicated power regulation
 
 ### Power Management
 
 **Battery System**
+- CELLEVIA BATTERIES LP584174 3.7V / 1800mAh LiPo battery
 - MCP73831 LiPo charging controller
-- MAX17048 fuel gauge
+- MAX17048G+T10 fuel gauge
 - JST connector
 
 **Voltage Regulation**
-- AP2112K-3.3 LDO for stable 3.3V
-- Si2301CDS for reverse polarity protection
-- BD5230G supervisor for clean resets
+- XC6220A331MR-G LDO for stable 3.3V
+- DMG2305UX-7 MOSFETs for reverse polarity protection
+- BD5229G-TR supervisor for clean resets
 
 ### Storage & Memory
 
@@ -67,17 +69,20 @@ OpenBook is an e-reader platform based on ESP32-C6 with E-Paper display technolo
  * I2C:
     - Used for communication with the BME688 sensor and DS3231SN RTC.
     - Send/Receive data to/from the sensor and RTC.
+    - Also used for MAX17048G+T10 fuel gauge monitoring
+    - QWIIC connector for expansion
 
  * SPI:
     - Used for communication with the E-Paper display and SD Card.
     - The ESP32-C6 uses SPI to send data to the display and read/write to the SD card.
+    - Also used for the external W25Q512JVEIQ flash memory
 
  * GPIO:
     - Used for the reset/boot button and other custom functionalities.
 
 **USB-C**
-- FUSB302BUCX controller
-- ESD protection on data lines
+- USB4110-GF-A connector
+- USBLC6-2SC6Y for ESD protection on data lines
 - Charging and data transfer
 
 **SPI Configuration**
@@ -88,7 +93,7 @@ OpenBook is an e-reader platform based on ESP32-C6 with E-Paper display technolo
 **I2C Setup**
 - 400kHz standard mode
 - 4.7kΩ pull-ups
-- Shared among BME688, MAX17048, DS3231, and QWIIC port
+- Shared among BME688, MAX17048G+T10, DS3231SN, and QWIIC port
 
 **USB Interface**
 - 5V, 500mA input
@@ -112,14 +117,49 @@ OpenBook is an e-reader platform based on ESP32-C6 with E-Paper display technolo
 
 
 ### Power consumption:
-- Display: ~125mA @ 3.3V
+- Display refresh: ~125mA @ 3.3V
 - Idle: ~25mA @ 3.3V
 - Deep sleep: ~150μA @ 3.3V
-- Duty cycle: 2-4 weeks typical use (3000mAh)
+- Duty cycle: 1-2 weeks typical use (1800mAh battery)
+
 
 # Design
 
 The final design of the PCB and 3D model attempt to minimize noise interference and maximize ease-of-use, while maintaining all of the core functionalities of OpenBook.
+
+**Metoda de rezolvare / Probleme intampinate**
+
+Schematic:
+
+- Implemented following the electric design of the e-book reader
+- Approved errors in relation to power pins
+
+PCB 2D:
+
+- Measured the dimensions and distances on the board and added the components accordingly (only on top layer)
+- Approved errors in relation to board outline clearance (components in question needed to be closer to the enclosure)
+- Added net classes to separate power lines from regular ones
+- Created the power lines on top, with no vias, then the rest, all while attempting to optimize routing
+- Added GND on top and bottom with no holes
+- Via stitching close to ESP32
+
+PCB 3D:
+
+- Ensured soldermask layer is visible and at a small distance from the circuitry on the board
+- Added accurate models for all components in use
+
+Final 3D design:
+
+- Added the pcb to the enclosure
+- Modified the box shape for the SD, buttons etc. to fit
+- Created a model for the Li-Po battery and 7.5” display
+- Put everything together to ensure it fits
+
+<br>
+
+**The end result**
+
+<br>
 
 ![case1](Images/OpenBook_front.png)
 
