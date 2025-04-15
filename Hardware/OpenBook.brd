@@ -113,6 +113,18 @@
 <text x="61.31" y="106.01" size="0.8128" layer="21">CHANGE</text>
 <text x="1.41" y="43.29" size="1.27" layer="21">U2</text>
 <text x="77" y="31" size="0.8128" layer="25">L1</text>
+<dimension x1="-1" y1="96" x2="0" y2="111.2" x3="-2" y3="103.6" textsize="1.778" layer="1" dtype="vertical"/>
+<dimension x1="0" y1="112" x2="24" y2="112" x3="12" y3="113" textsize="1.778" layer="1" dtype="horizontal"/>
+<dimension x1="0" y1="118" x2="49" y2="117" x3="24.5" y3="116" textsize="1.778" layer="1" dtype="horizontal"/>
+<dimension x1="0" y1="119" x2="63.7" y2="117.98" x3="31.85" y3="120" textsize="1.778" layer="1" dtype="horizontal"/>
+<dimension x1="0" y1="124" x2="92.2" y2="111" x3="46.1" y3="125" textsize="1.778" layer="1" dtype="horizontal"/>
+<dimension x1="170.2" y1="67.28" x2="92.25" y2="73.01" x3="131.225" y3="77" textsize="1.778" layer="1" dtype="horizontal"/>
+<dimension x1="76.5" y1="-0.17" x2="94.65" y2="-0.64" x3="85.575" y3="-1" textsize="1.778" layer="1" dtype="horizontal"/>
+<dimension x1="95" y1="10" x2="94" y2="0" x3="93" y3="5" textsize="1.778" layer="1" dtype="vertical"/>
+<dimension x1="170.59" y1="19.52" x2="172" y2="0" x3="173" y3="9.76" textsize="1.778" layer="1" dtype="vertical"/>
+<dimension x1="174.75" y1="54.55" x2="177" y2="0" x3="178" y3="27.275" textsize="1.778" layer="1" dtype="vertical"/>
+<dimension x1="182" y1="0" x2="183.22" y2="67.2" x3="184" y3="33.6" textsize="1.778" layer="1" dtype="vertical"/>
+<dimension x1="173.97" y1="67.22" x2="95" y2="111" x3="176" y3="89.11" textsize="1.778" layer="1" dtype="vertical"/>
 </plain>
 <libraries>
 <library name="DeskAssistantv19v1" urn="urn:adsk.wipprod:fs.file:vf.HpLHB4MkSECyjCbCBDYNVg">
